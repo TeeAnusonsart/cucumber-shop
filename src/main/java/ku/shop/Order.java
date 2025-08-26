@@ -16,6 +16,9 @@ public class Order {
     public void addItem(Product prod, int quantity) {
         items.add(new OrderItem(prod, quantity));
         prod.cutStock(quantity);
+        if (prod.getStock()<0){
+            throw new RuntimeException();
+        }
     }
 
     public double getTotal() {
